@@ -1,0 +1,33 @@
+--Create a Grocery Store database
+
+create table Bennys (id INTEGER PRIMARY KEY, item TEXT, price INTEGER, quantity INTEGER, aisle INTEGER);
+
+INSERT INTO Bennys VALUES (1, "Bananas", 1, 80, 4);
+INSERT INTO Bennys VALUES (2, "Oranges", 1.50, 65, 4);
+INSERT INTO Bennys VALUES (4, "Green Apples", .75, 75, 4);
+INSERT INTO Bennys VALUES (5, "Peanut Butter", 5, 10, 7);
+INSERT INTO Bennys VALUES (6, "Fruit Snacks", 2.50, 9, 5);
+INSERT INTO Bennys VALUES (7, "Jelly",2.89, 17, 7);
+INSERT INTO Bennys VALUES (8, "Crackers", 6.59, 45, 8);
+INSERT INTO Bennys VALUES (9, "Dog Food", 8.25, 5, 1);
+INSERT INTO Bennys VALUES (10, "Cheese", 4.99, 5, 9);
+INSERT INTO Bennys VALUES (11, "Paper Plates", 4.99, 79, 3);
+INSERT INTO Bennys VALUES (12, "Fish", 4.99,10, 9);
+INSERT INTO Bennys VALUES (13, "Pasta Sauce", 5, 30, 7);
+INSERT INTO Bennys VALUES (14, "Grilled Chicken", 6.83, 25, 9);
+INSERT INTO Bennys VALUES (15, "1b Grapes", 3.50, 56, 4);
+
+--Display the store database ordered by Price
+SELECT * FROM bennys
+ORDER BY price desc;
+
+--What aisle can i find Oranges?
+SELECT aisel 
+FROM bennys
+WHERE item LIKE "%Oranges";
+
+--What are the 3 Most expensive items you sell?
+SELECT item, price 
+FROM bennys
+ORDER BY price desc
+LIMIT 3;
