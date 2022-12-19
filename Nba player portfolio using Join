@@ -1,0 +1,58 @@
+CREATE TABLE nba_players (
+  player_id INTEGER PRIMARY KEY,
+  name TEXT NOT NULL
+);
+
+CREATE TABLE nba_career_stats (
+  player_id INTEGER PRIMARY KEY,
+  points INTEGER NOT NULL,
+  steals INTEGER NOT NULL,
+  rebounds INTEGER NOT NULL,
+  blocks INTEGER NOT NULL,
+  FOREIGN KEY (player_id) REFERENCES nba_players (player_id)
+);
+
+INSERT INTO nba_players (player_id, name)
+VALUES
+  (1, 'Michael Jordan'),
+  (2, 'Kobe Bryant'),
+  (3, 'Stephen Curry'),
+  (4, 'LeBron James'),
+  (5, 'Kevin Durant'),
+  (6, 'Dwyane Wade'),
+  (7, 'Tim Duncan'),
+  (8, 'Carmelo Anthony'),
+  (9, 'Dirk Nowitzki'),
+  (10, 'James Harden'),
+  (11, 'Karl Malone'),
+  (12, 'Magic Johnson'),
+  (13, 'Larry Bird'),
+  (14, 'Wilt Chamberlain'),
+  (15, 'Shaquille O'Neal');
+
+INSERT INTO nba_career_stats (player_id, points, steals, rebounds, blocks)
+VALUES
+  (1, 32292, 893, 6672, 581),
+  (2, 33643, 1133, 6306, 626),
+  (3, 21417, 544, 2350, 214),
+  (4, 41037, 1221, 9205, 1422),
+  (5, 29779, 584, 7590, 890),
+  (6, 21750, 711, 4239, 504),
+  (7, 26496, 879, 15079, 456),
+  (8, 24056, 735, 6802, 372),
+  (9, 31168, 603, 8111, 345),
+  (10, 25680, 568, 3575, 275),
+  (11, 36928, 645, 11626, 357),
+  (12, 17707, 677, 5357, 556),
+  (13, 21006, 711, 5793, 675),
+  (14, 29923, 719, 13359, 628),
+  (15, 28596, 1043, 14207, 3193);
+
+SELECT
+  p.name AS player_name,
+  s.points,
+  s.steals,
+  s.rebounds,
+  s.blocks
+FROM nba_players p
+JOIN nba_career_stats s ON p.player_id = s.player_id;
