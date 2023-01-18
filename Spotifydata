@@ -41,3 +41,13 @@ limit 10;
 select artist_name, track_name, max(duration_ms)
 from Spotifydata 
 where artist_name Like '%Bad Bunny%'
+
+
+WITH artist_popularity AS (
+    SELECT artist, AVG(popularity) as avg_popularity
+    FROM Spotify
+    GROUP BY artist
+)
+SELECT artist, avg_popularity, 'Top Star' as Label
+FROM artist_popularity
+WHERE avg_popularity >= 90;
